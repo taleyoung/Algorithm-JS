@@ -11,6 +11,7 @@ function getOneNumOfBi(num) {
       count++;
     }
     flag = flag << 1;
+    console.log("flag", flag);
   }
   return count;
 }

@@ -62,8 +62,8 @@ function mergeList2(p1, p2) {
   return head;
 }
 
-let list1 = new Node(1, new Node(3, new Node(5, new Node(7, null))));
-let list2 = new Node(2, new Node(4, new Node(6, new Node(8, null))));
+let list1 = new Node(1, new Node(2, new Node(4, null)));
+let list2 = new Node(1, new Node(3, new Node(4, null)));
 
 let head = mergeList1(list1, list2);
 while (head) {

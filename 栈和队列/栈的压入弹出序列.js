@@ -3,35 +3,24 @@
  * 且压入的数字都不相同
  */
 
-function getStackTop(arr) {
-  if (!Array.isArray(arr)) {
+function checkIsPopOrder(pushed, poped) {
+  if (!pushed.length || !poped.length || pushed.length != poped.length) {
     return false;
   }
-  if (!arr.length) {
-    return false;
-  }
-  return arr[arr.length - 1];
-}
-function checkIsPopOrder(pushOrder, popOrder) {
-  if (
-    !pushOrder.length ||
-    !popOrder.length ||
-    pushOrder.length != popOrder.length
-  ) {
-    return false;
-  }
+  let len = pushed.length;
   let stack = [];
-  let i = 0; //pushOrder的指针
-  let j = 0; //popOrder的指针
-  while (j < popOrder.length) {
-    for (; i < pushOrder.length && popOrder[j] !== getStackTop(stack); i++) {
-      stack.push(pushOrder[i]);
+  let i = 0,
+    j = 0;
+  while (i < len) {
+    while (j < len && stack[stack.length - 1] !== popped[i]) {
+      stack.push(pushed[j]);
+      j++;
     }
-    if (popOrder[j] !== getStackTop(stack)) {
+    if (stack[stack.length - 1] !== popped[i]) {
       return false;
     }
     stack.pop();
-    j++;
+    i++;
   }
   return true;
 }

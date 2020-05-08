@@ -47,3 +47,13 @@ const list1 = new Node(1, new Node(2, new Node(3, node3th)));
 const list2 = new Node(5, new Node(6, node3th));
 
 console.log(findFirstCommonNode1(list1, list2));
+
+var getIntersectionNode = function(headA, headB) {
+  let p1 = headA;
+  let p2 = headB;
+  while (p1 !== p2) {
+    p1 = p1 == null ? headB : p1.next;
+    p2 = p2 == null ? headA : p2.next;
+  }
+  return p1;
+};

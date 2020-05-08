@@ -40,3 +40,29 @@ let root = new Node(
   new Node(2, new Node(5, null), new Node(6, null))
 );
 printBiTree(root);
+
+/**
+ * 题目2 从上到下按层打印二叉树，
+ * 同一层的节点按从左到右的顺序打印，每一层打印到一行。
+ * 并且第0行正序打印，第1行逆序 依次递推
+ */
+
+let levelOrder = function(root) {
+  if (!root) return [];
+  let res = [];
+  let queue = [root];
+  let level = 0;
+  while (queue.length) {
+    res[level] = [];
+    let levelNum = queue.length;
+    while (levelNum--) {
+      let top = queue.shift();
+      res[level].push(top.val);
+      if (top.left) queue.push(top.left);
+      if (top.right) queue.push(top.right);
+    }
+    if (level % 2) res[level].reverse();
+    level++;
+  }
+  return res;
+};

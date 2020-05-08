@@ -1,5 +1,5 @@
 /**
- * 输入一个链表的头结点，反转链表，并输出反转后的头结点
+ * 题1：输入一个链表的头结点，反转链表，并输出反转后的头结点
  */
 
 /**
@@ -38,3 +38,37 @@ let node3 = new Node(3, null),
 let head = new Node(0, node1);
 
 console.log(reverseList(head));
+
+/**
+ * 题二 区间反转  lettcode 92
+ * https://leetcode-cn.com/problems/reverse-linked-list-ii/submissions/
+ */
+
+//循环做法
+var reverseBetween = function(head, m, n) {
+  if (!head) return null;
+  let p = (node = new ListNode());
+  let front, tail, cur, pre;
+  const count = n - m;
+  p.next = head;
+  for (let i = 0; i < m - 1; i++) {
+    p = p.next;
+  }
+  if (!p) {
+    return node.next;
+  }
+  front = p;
+  tail = p.next;
+  pre = p;
+  cur = p.next;
+  for (let i = 0; i <= count; i++) {
+    let next = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = next;
+  }
+  front.next = pre;
+  tail.next = cur;
+
+  return node.next;
+};
