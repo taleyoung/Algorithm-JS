@@ -72,3 +72,32 @@ var reverseBetween = function(head, m, n) {
 
   return node.next;
 };
+
+//递归解法
+var reverseBetween2 = function(head, m, n) {
+  if (!head) return null;
+  let reverse = (pre, cur) => {
+    if (!cur) return pre;
+    let next = cur.next;
+    cur.next = pre;
+    return reverse(cur, next);
+  };
+  let front, tail, start, end;
+  let count = n - m;
+  let p = (node = new ListNode());
+  p.next = head;
+  for (let i = 0; i < m - 1; i++) {
+    p = p.next;
+  }
+  front = p;
+  start = p.next;
+  for (let i = 0; i <= count; i++) {
+    p = p.next;
+  }
+  end = p;
+  tail = p.next;
+  end.next = null;
+  front.next = reverse(null, start);
+  start.next = tail;
+  return node.next;
+};
