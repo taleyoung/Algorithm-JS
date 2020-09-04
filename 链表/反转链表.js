@@ -21,8 +21,7 @@ function reverseList(head) {
   if (!head) {
     return null;
   }
-  let node = head,
-    pre = null;
+  let node = head, pre = null;
   while (node) {
     let next = node.next;
     node.next = pre;
@@ -32,9 +31,8 @@ function reverseList(head) {
   return pre;
 }
 
-let node3 = new Node(3, null),
-  node2 = new Node(2, node3),
-  node1 = new Node(1, node2);
+let node3 = new Node(3, null), node2 = new Node(2, node3),
+    node1 = new Node(1, node2);
 let head = new Node(0, node1);
 
 console.log(reverseList(head));
